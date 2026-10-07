@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://kevinlopes23.github.io/kevmatech-site/sitemap.xml
