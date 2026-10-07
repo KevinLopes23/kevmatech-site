@@ -22,6 +22,8 @@
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
 <link rel="preload" href="assets/fonts/space-grotesk-700.woff" as="font" type="font/woff" crossorigin>
 <link rel="stylesheet" href="styles.css">
+<script>document.documentElement.classList.add('js')</script>
+<script src="main.js" defer></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -52,6 +54,7 @@
   <symbol id="i-sobe" viewBox="0 0 24 24"><path d="M6 18 18 6M9 6h9v9" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"/></symbol>
 </svg>
 
+<div class="progresso" aria-hidden="true"></div>
 <a class="pular" href="#conteudo">Pular para o conteúdo</a>
 
 <header class="topo">
@@ -59,6 +62,7 @@
     <a class="logo" href="#conteudo" aria-label="Kevma Tech, início"><img src="assets/logo-horizontal-negativo.svg" alt="Kevma Tech" width="146" height="40"></a>
     <nav class="nav" aria-label="Principal">
       <a href="#como-funciona">Como funciona</a>
+      <a href="#sistemas">Sistemas</a>
       <a href="#planos">Planos</a>
       <a href="#sobre">Quem somos</a>
       <a href="#duvidas">Dúvidas</a>
@@ -85,19 +89,34 @@
         </ul>
       </div>
 
-      <figure class="busca" aria-label="Ilustração: sua empresa subindo para o primeiro lugar numa busca do Google" style="margin:0">
+      <figure class="busca" data-busca aria-label="Ilustração: sua empresa subindo para o primeiro lugar numa busca do Google" style="margin:0">
         <div class="busca-barra"><svg aria-hidden="true"><use href="#i-busca"/></svg>oficina mecânica perto de mim</div>
-        <div class="resultado voce">
-          <span class="pos">1º</span>
-          <div><strong>Sua empresa</strong><small>Aberto agora · WhatsApp · fotos</small></div>
-          <span class="subiu"><svg aria-hidden="true"><use href="#i-sobe"/></svg>subiu</span>
-        </div>
-        <div class="resultado"><span class="pos">2º</span><div class="linhas"><span></span><span></span></div></div>
-        <div class="resultado"><span class="pos">3º</span><div class="linhas"><span></span><span></span></div></div>
-        <div class="resultado antes"><span class="pos">8º</span><div class="linhas"><span></span><span></span></div></div>
+        <ol class="ranking" aria-hidden="true">
+          <li class="resultado voce" style="--slot:0">
+            <span class="pos" data-pos>1º</span>
+            <div><strong>Sua empresa</strong><small>Aberto agora · WhatsApp · fotos</small></div>
+            <span class="subiu"><svg aria-hidden="true"><use href="#i-sobe"/></svg>subiu</span>
+          </li>
+          <li class="resultado" style="--slot:1"><span class="pos">2º</span><div class="linhas"><span></span><span></span></div></li>
+          <li class="resultado" style="--slot:2"><span class="pos">3º</span><div class="linhas"><span></span><span></span></div></li>
+          <li class="resultado" style="--slot:3"><span class="pos">4º</span><div class="linhas"><span></span><span></span></div></li>
+        </ol>
       </figure>
     </div>
   </section>
+
+  <div class="faixa" role="region" aria-label="Segmentos que atendemos">
+    <div class="faixa-trilho">
+      <div class="faixa-grupo">
+        <span>Oficinas</span><span>Clínicas</span><span>Restaurantes</span><span>Pet shops</span><span>Academias</span>
+        <span>Salões de beleza</span><span>Advogados</span><span>Imobiliárias</span><span>Lojas</span><span>Contadores</span>
+      </div>
+      <div class="faixa-grupo" aria-hidden="true">
+        <span>Oficinas</span><span>Clínicas</span><span>Restaurantes</span><span>Pet shops</span><span>Academias</span>
+        <span>Salões de beleza</span><span>Advogados</span><span>Imobiliárias</span><span>Lojas</span><span>Contadores</span>
+      </div>
+    </div>
+  </div>
 
   <section aria-labelledby="t-dores">
     <div class="container">
@@ -135,6 +154,91 @@
         <li class="passo"><h3>No ar em 7 dias</h3><p>Perfil do Google completo, site rápido com WhatsApp e cadastro nos guias locais.</p></li>
         <li class="passo"><h3>Acompanhamento</h3><p>Avaliações, posts e ajustes todo mês, para continuar subindo.</p></li>
       </ol>
+    </div>
+  </section>
+
+  <section class="sistemas-sec" id="sistemas" aria-labelledby="t-sistemas">
+    <div class="container">
+      <div class="cabeca">
+        <span class="etiqueta">Sistemas sob medida</span>
+        <h2 id="t-sistemas">Seu negócio tem um jeito próprio de funcionar. O sistema também deveria.</h2>
+        <p>Além do Google, criamos sistemas para a necessidade de cada cliente. Tem desenvolvedor de verdade na equipe, então não é modelo pronto nem mensalidade cara de software genérico.</p>
+      </div>
+
+      <div class="historia" data-historia>
+        <div class="historia-passos">
+          <article class="hpasso ativo" data-tela="agenda">
+            <span class="hnum">01</span>
+            <h3>Agendamento online</h3>
+            <p>O cliente escolhe o dia e o horário sozinho, a qualquer hora. Você recebe o aviso no celular e para de perder tempo no telefone.</p>
+            <ul class="chips"><li>Clínicas</li><li>Salões</li><li>Oficinas</li><li>Estúdios</li></ul>
+            <div class="tela" data-id="agenda" aria-hidden="true">
+              <div class="tela-topo"><div><b>Agendar horário</b><br><small>Seu negócio · Bauru</small></div><span class="ponto"></span></div>
+              <div class="dias"><span>Seg<small>12</small></span><span>Ter<small>13</small></span><span class="hoje">Qua<small>14</small></span><span>Qui<small>15</small></span><span>Sex<small>16</small></span></div>
+              <div class="horarios"><span class="ocupado">08:00</span><span>09:00</span><span class="ocupado">10:00</span><span class="escolhido">11:00 ✓</span><span>14:00</span><span>15:30</span></div>
+              <div class="aviso"><span class="ponto"></span><div><b>Novo agendamento</b><br>Ana · quarta, 11:00</div></div>
+            </div>
+          </article>
+
+          <article class="hpasso" data-tela="cardapio">
+            <span class="hnum">02</span>
+            <h3>Cardápio e catálogo digital</h3>
+            <p>Seu cliente monta o pedido pelo celular e ele chega pronto no seu WhatsApp. Sem pagar comissão para aplicativo de entrega.</p>
+            <ul class="chips"><li>Restaurantes</li><li>Lanchonetes</li><li>Lojas</li><li>Pet shops</li></ul>
+            <div class="tela" data-id="cardapio" aria-hidden="true">
+              <div class="tela-topo"><div><b>Cardápio</b><br><small>Aberto até 23h</small></div><span class="ponto"></span></div>
+              <div class="item-menu"><span class="foto-prato"></span><div><b>Combo da casa</b><small>Lanche, batata e bebida</small></div><span class="mais">+</span></div>
+              <div class="item-menu"><span class="foto-prato"></span><div><b>Porção especial</b><small>Serve 2 pessoas</small></div><span class="mais">+</span></div>
+              <div class="item-menu"><span class="foto-prato"></span><div><b>Sobremesa</b><small>Feita na hora</small></div><span class="mais">+</span></div>
+              <div class="carrinho"><span>2 itens no pedido</span><span>Pedir no WhatsApp →</span></div>
+            </div>
+          </article>
+
+          <article class="hpasso" data-tela="lembrete">
+            <span class="hnum">03</span>
+            <h3>Lembretes automáticos</h3>
+            <p>Revisão do carro, retorno da consulta, banho do pet: o sistema lembra o cliente na hora certa e ele volta sem você precisar correr atrás.</p>
+            <ul class="chips"><li>Oficinas</li><li>Clínicas</li><li>Veterinárias</li><li>Academias</li></ul>
+            <div class="tela" data-id="lembrete" aria-hidden="true">
+              <div class="tela-topo"><div><b>WhatsApp</b><br><small>mensagem automática</small></div><span class="ponto"></span></div>
+              <div class="conversa">
+                <div class="balao">Olá, João! Sua troca de óleo vence na semana que vem. Quer deixar agendado?<small>09:00</small></div>
+                <div class="balao meu">Quero sim! Sábado de manhã dá?<small>09:04</small></div>
+                <div class="botoes-balao"><span>Ver horários</span><span>Falar com a loja</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="hpasso" data-tela="painel">
+            <span class="hnum">04</span>
+            <h3>Painel de gestão</h3>
+            <p>Clientes, pedidos, agendamentos e o resultado do mês numa tela só, no computador ou no celular.</p>
+            <ul class="chips"><li>Qualquer negócio</li><li>Equipes</li><li>Filiais</li></ul>
+            <div class="tela" data-id="painel" aria-hidden="true">
+              <div class="tela-topo"><div><b>Resumo da semana</b><br><small>Exemplo ilustrativo</small></div><span class="ponto"></span></div>
+              <div class="kpis"><div><small>Pedidos</small><b>148</b></div><div><small>Clientes novos</small><b>23</b></div></div>
+              <div class="barras"><span style="--h:42%"></span><span style="--h:58%"></span><span style="--h:51%"></span><span style="--h:66%"></span><span style="--h:72%"></span><span style="--h:63%"></span><span style="--h:88%"></span></div>
+              <div class="legenda"><span>Seg</span><span>Ter</span><span>Qua</span><span>Qui</span><span>Sex</span><span>Sáb</span><span>Dom</span></div>
+            </div>
+          </article>
+
+          <article class="hpasso" data-tela="medida">
+            <span class="hnum">05</span>
+            <h3>Do jeito que você precisa</h3>
+            <p>Não achou o que precisa aqui? A gente conversa, entende o seu processo e desenha o sistema do zero, com uma prévia antes de começar.</p>
+            <ul class="chips"><li>Controle de estoque</li><li>Área do cliente</li><li>Orçamentos</li><li>Integrações</li></ul>
+            <div class="tela" data-id="medida" aria-hidden="true">
+              <div class="tela-topo"><div><b>Seu sistema</b><br><small>desenhado com você</small></div><span class="ponto"></span></div>
+              <div class="blocos"><span class="bloco cheio">Clientes</span><span class="bloco">Pedidos</span><span class="bloco">Estoque</span><span class="bloco laranja">Sua ideia</span></div>
+              <p class="rodape-tela">Você descreve, a gente transforma em sistema.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="historia-palco" aria-hidden="true">
+          <div class="palco-fixo"><div class="dispositivo" data-palco></div></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -193,23 +297,7 @@
     </div>
   </section>
 
-  <section class="cinza" aria-labelledby="t-sistemas">
-    <div class="container sistemas">
-      <div class="cabeca" style="margin-bottom:0">
-        <span class="etiqueta">Algo a mais</span>
-        <h2 id="t-sistemas">Quando o WhatsApp não dá mais conta, a gente cria o sistema</h2>
-        <p>Somos uma agência com desenvolvedor de verdade na equipe. Fazemos sob medida o que o seu negócio precisa, sem mensalidade cara de software pronto.</p>
-      </div>
-      <div class="sistemas-lista">
-        <div class="sistema"><h3>Agendamento online</h3><p>O cliente marca sozinho; você recebe o aviso no celular.</p></div>
-        <div class="sistema"><h3>Cardápio digital</h3><p>Pedido direto no seu WhatsApp, sem pagar taxa de aplicativo.</p></div>
-        <div class="sistema"><h3>Lembrete de retorno</h3><p>Revisão, troca de óleo, consulta: o sistema lembra o cliente por você.</p></div>
-        <div class="sistema"><h3>Painel de gestão</h3><p>Clientes, pedidos e números do mês numa tela só.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="sobre" aria-labelledby="t-sobre">
+  <section class="cinza" id="sobre" aria-labelledby="t-sobre">
     <div class="container">
       <div class="cabeca">
         <span class="etiqueta">Quem somos</span>
@@ -218,7 +306,10 @@
       </div>
       <div class="sobre">
         <article class="pessoa">
-          <span class="inicial" aria-hidden="true">M</span>
+          <picture class="foto">
+            <source srcset="assets/equipe/mariana.webp" type="image/webp">
+            <img src="assets/equipe/mariana.jpg" alt="Foto da Mariana, sócia da Kevma Tech" width="480" height="600" loading="lazy" decoding="async">
+          </picture>
           <div>
             <h3>Mariana</h3>
             <p class="cargo">Marketing e comercial</p>
@@ -226,7 +317,10 @@
           </div>
         </article>
         <article class="pessoa">
-          <span class="inicial" aria-hidden="true">K</span>
+          <picture class="foto">
+            <source srcset="assets/equipe/kevin.webp" type="image/webp">
+            <img src="assets/equipe/kevin.jpg" alt="Foto do Kevin, sócio da Kevma Tech" width="320" height="400" loading="lazy" decoding="async">
+          </picture>
           <div>
             <h3>Kevin</h3>
             <p class="cargo">Desenvolvimento</p>
@@ -237,7 +331,7 @@
     </div>
   </section>
 
-  <section class="cinza" id="duvidas" aria-labelledby="t-duvidas">
+  <section id="duvidas" aria-labelledby="t-duvidas">
     <div class="container">
       <div class="cabeca">
         <span class="etiqueta">Dúvidas</span>
