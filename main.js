@@ -103,6 +103,116 @@
     }
   }
 
+  /* Calculadora "quanto você pode estar deixando na mesa" */
+  const calc = document.querySelector('[data-calculadora]');
+  if (calc) {
+    const IMPLANTACAO_ESSENCIAL = 790;
+    const real = (v) => `R$ ${Math.round(v).toLocaleString('pt-BR')}`;
+    const campo = (nome) => calc.querySelector(`[data-campo="${nome}"]`);
+    const saida = (nome) => calc.querySelector(`[data-saida="${nome}"]`);
+    const valorMes = saida('mes');
+
+    const calcular = () => {
+      const ticket = Number(campo('ticket').value);
+      const clientes = Number(campo('clientes').value);
+      const mes = ticket * clientes;
+      const paga = Math.max(1, Math.ceil(IMPLANTACAO_ESSENCIAL / ticket));
+      saida('ticket').textContent = real(ticket);
+      saida('clientes').textContent = String(clientes);
+      valorMes.textContent = real(mes);
+      saida('ano').textContent = real(mes * 12);
+      saida('paga').textContent = paga === 1 ? '1 cliente' : `${paga} clientes`;
+      valorMes.classList.add('pulso');
+      clearTimeout(valorMes.pulsoTimer);
+      valorMes.pulsoTimer = setTimeout(() => valorMes.classList.remove('pulso'), 180);
+    };
+
+    calc.querySelectorAll('input[name="segmento"]').forEach((r) => r.addEventListener('change', () => {
+      campo('ticket').value = r.value;
+      calcular();
+    }));
+    campo('ticket').addEventListener('input', calcular);
+    campo('clientes').addEventListener('input', calcular);
+    calcular();
+  }
+
+  /* Diagnóstico em 3 cliques: monta a mensagem e abre o WhatsApp */
+  const quiz = document.querySelector('[data-quiz]');
+  if (quiz) {
+    const WHATSAPP = '5514997410728';
+    const passos = Array.from(quiz.querySelectorAll('.quiz-passo'));
+    const barraQuiz = quiz.querySelector('[data-quiz-barra]');
+    const contadorQuiz = quiz.querySelector('[data-quiz-contador]');
+    const voltar = quiz.querySelector('[data-quiz-voltar]');
+    const enviar = quiz.querySelector('[data-quiz-enviar]');
+    const erro = quiz.querySelector('[data-quiz-erro]');
+    let atual = 0;
+
+    const mostrar = (i) => {
+      atual = i;
+      passos.forEach((p, j) => p.classList.toggle('atual', j === i));
+      barraQuiz.style.width = `${((i + 1) / passos.length) * 100}%`;
+      contadorQuiz.textContent = `Passo ${i + 1} de ${passos.length}`;
+      voltar.hidden = i === 0;
+      enviar.hidden = i !== passos.length - 1;
+      erro.hidden = true;
+    };
+
+    // Escolher uma opção já avança para o próximo passo.
+    passos.slice(0, -1).forEach((p, i) => {
+      p.querySelectorAll('input[type="radio"]').forEach((r) => r.addEventListener('change', () => {
+        setTimeout(() => mostrar(i + 1), 220);
+      }));
+    });
+    voltar.addEventListener('click', () => mostrar(Math.max(0, atual - 1)));
+    quiz.querySelector('#quiz-nome').addEventListener('input', () => { erro.hidden = true; });
+
+    const limpar = (v) => String(v || '').replace(/\s+/g, ' ').trim().slice(0, 80);
+
+    quiz.addEventListener('submit', (ev) => {
+      ev.preventDefault();
+      const dados = new FormData(quiz);
+      const empresa = limpar(dados.get('empresa'));
+      if (!empresa) {
+        erro.hidden = false;
+        quiz.querySelector('#quiz-nome').focus();
+        return;
+      }
+      const bairro = limpar(dados.get('bairro'));
+      const negocio = limpar(dados.get('negocio')) || 'empresa';
+      const dor = limpar(dados.get('dor'));
+      const linhas = [
+        'Olá! Vim pelo site da Kevma Tech e quero o diagnóstico grátis.',
+        `Empresa: ${empresa}${bairro ? ` (${bairro})` : ''}`,
+        `Tipo de negócio: ${negocio}`,
+      ];
+      if (dor) linhas.push(`O que mais incomoda: ${dor}`);
+      const url = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(linhas.join('\n'))}`;
+      quiz.dataset.ultimaUrl = url;
+      // Sem 'noopener' nos parâmetros (ele faz o open devolver null); o opener é cortado logo em seguida.
+      const aba = window.open(url, '_blank');
+      if (aba) aba.opener = null;
+      else window.location.href = url; // nova aba bloqueada: abre na mesma
+    });
+
+    mostrar(0);
+  }
+
+  /* Holofote laranja seguindo o mouse nas seções escuras */
+  if (!reduzirMovimento && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.querySelectorAll('.hero, .sistemas-sec, .final').forEach((secao) => {
+      secao.addEventListener('mousemove', (ev) => {
+        const r = secao.getBoundingClientRect();
+        secao.style.setProperty('--mx', `${ev.clientX - r.left}px`);
+        secao.style.setProperty('--my', `${ev.clientY - r.top}px`);
+      });
+      secao.addEventListener('mouseleave', () => {
+        secao.style.setProperty('--mx', '-999px');
+        secao.style.setProperty('--my', '-999px');
+      });
+    });
+  }
+
   /* Sistemas: palco fixo no desktop, telas em linha no celular */
   const historia = document.querySelector('[data-historia]');
   if (historia && temObserver) {

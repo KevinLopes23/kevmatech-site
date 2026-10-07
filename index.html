@@ -79,7 +79,7 @@
         <h1 id="titulo">Sua empresa aparecendo no Google, <em>em Bauru.</em></h1>
         <p class="lead">Quando alguém procura o que você vende, sua empresa precisa estar lá: no mapa, com site, horário, fotos e WhatsApp.</p>
         <div class="acoes">
-          <a class="btn btn-primario" href="https://wa.me/5514997410728?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Kevma%20Tech%20e%20quero%20o%20diagn%C3%B3stico%20gr%C3%A1tis%20da%20minha%20empresa." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-msg"/></svg>Quero o diagnóstico grátis</a>
+          <a class="btn btn-primario" href="#diagnostico"><svg aria-hidden="true"><use href="#i-msg"/></svg>Quero o diagnóstico grátis</a>
           <a class="btn btn-secundario" href="#planos">Ver planos</a>
         </div>
         <ul class="garantias">
@@ -138,6 +138,38 @@
           <h3>Atendimento todo no braço</h3>
           <p>Agenda no caderno, pedido por mensagem, cliente que some. Dá para organizar com um sistema simples.</p>
         </article>
+      </div>
+
+      <div class="calculadora" data-calculadora aria-labelledby="t-calc">
+        <div class="calc-entrada">
+          <span class="etiqueta">Faça a conta</span>
+          <h3 id="t-calc">Quanto você pode estar deixando na mesa?</h3>
+          <fieldset class="calc-segmentos">
+            <legend>Seu tipo de negócio</legend>
+            <label><input type="radio" name="segmento" value="450" checked><span>Oficina</span></label>
+            <label><input type="radio" name="segmento" value="250"><span>Clínica</span></label>
+            <label><input type="radio" name="segmento" value="70"><span>Restaurante</span></label>
+            <label><input type="radio" name="segmento" value="120"><span>Salão</span></label>
+            <label><input type="radio" name="segmento" value="100"><span>Pet shop</span></label>
+            <label><input type="radio" name="segmento" value="1500"><span>Advogado</span></label>
+          </fieldset>
+          <div class="calc-campo">
+            <label for="calc-ticket">Quanto um cliente gasta, em média <output for="calc-ticket" data-saida="ticket">R$ 450</output></label>
+            <input id="calc-ticket" type="range" min="30" max="3000" step="10" value="450" data-campo="ticket">
+          </div>
+          <div class="calc-campo">
+            <label for="calc-clientes">Clientes novos a mais por mês, aparecendo no Google <output for="calc-clientes" data-saida="clientes">2</output></label>
+            <input id="calc-clientes" type="range" min="1" max="20" step="1" value="2" data-campo="clientes">
+          </div>
+        </div>
+        <div class="calc-resultado" aria-live="polite">
+          <span class="calc-rotulo">Por mês, pode estar indo para o concorrente</span>
+          <strong class="calc-valor" data-saida="mes">R$ 900</strong>
+          <span class="calc-ano">ou <b data-saida="ano">R$ 10.800</b> por ano</span>
+          <p class="calc-paga">O plano Essencial (R$ 790) se paga com <b data-saida="paga">2 clientes</b>.</p>
+          <a class="btn btn-primario" href="#diagnostico">Quero o diagnóstico grátis</a>
+          <small>Estimativa feita com os números que você escolheu. Não é promessa de resultado.</small>
+        </div>
       </div>
     </div>
   </section>
@@ -348,11 +380,55 @@
     </div>
   </section>
 
-  <section class="final" aria-labelledby="t-final">
+  <section class="final" id="diagnostico" aria-labelledby="t-final">
     <div class="container">
-      <h2 id="t-final">Quer saber onde sua empresa aparece hoje?</h2>
-      <p>Mande o nome da sua empresa no WhatsApp. O diagnóstico é grátis e sem compromisso.</p>
-      <a class="btn btn-primario" href="https://wa.me/5514997410728?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Kevma%20Tech%20e%20quero%20o%20diagn%C3%B3stico%20gr%C3%A1tis%20da%20minha%20empresa." target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#i-msg"/></svg>Pedir meu diagnóstico grátis</a>
+      <h2 id="t-final">Diagnóstico grátis em 3 cliques</h2>
+      <p>Responda rapidinho e o WhatsApp abre com a mensagem pronta. Sem compromisso.</p>
+
+      <form class="quiz" data-quiz action="https://wa.me/5514997410728" method="get" target="_blank" novalidate>
+        <div class="quiz-progresso" aria-hidden="true"><span data-quiz-barra></span></div>
+        <p class="quiz-etapa" data-quiz-contador>Passo 1 de 3</p>
+
+        <fieldset class="quiz-passo" data-passo="1">
+          <legend>Qual é o seu tipo de negócio?</legend>
+          <div class="quiz-opcoes">
+            <label><input type="radio" name="negocio" value="oficina"><span>Oficina / auto center</span></label>
+            <label><input type="radio" name="negocio" value="clínica ou consultório"><span>Clínica / consultório</span></label>
+            <label><input type="radio" name="negocio" value="restaurante ou lanchonete"><span>Restaurante / lanchonete</span></label>
+            <label><input type="radio" name="negocio" value="loja"><span>Loja</span></label>
+            <label><input type="radio" name="negocio" value="salão ou estética"><span>Salão / estética</span></label>
+            <label><input type="radio" name="negocio" value="outro tipo de negócio"><span>Outro</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-passo" data-passo="2">
+          <legend>O que mais te incomoda hoje?</legend>
+          <div class="quiz-opcoes">
+            <label><input type="radio" name="dor" value="não aparecemos no Google"><span>Não aparecemos no Google</span></label>
+            <label><input type="radio" name="dor" value="não temos site ou ele está antigo"><span>Site antigo ou nenhum</span></label>
+            <label><input type="radio" name="dor" value="o atendimento é todo manual"><span>Atendimento todo manual</span></label>
+            <label><input type="radio" name="dor" value="precisamos de um sistema próprio"><span>Quero um sistema próprio</span></label>
+          </div>
+        </fieldset>
+
+        <fieldset class="quiz-passo" data-passo="3">
+          <legend>Qual é o nome da sua empresa?</legend>
+          <div class="quiz-campos">
+            <label for="quiz-nome">Nome da empresa</label>
+            <input id="quiz-nome" name="empresa" type="text" maxlength="80" autocomplete="organization" placeholder="Ex.: Oficina do Zé" required>
+            <label for="quiz-bairro">Bairro (opcional)</label>
+            <input id="quiz-bairro" name="bairro" type="text" maxlength="60" placeholder="Ex.: Centro">
+            <p class="quiz-erro" data-quiz-erro role="alert" hidden>Escreva o nome da empresa para continuar.</p>
+          </div>
+        </fieldset>
+
+        <div class="quiz-acoes">
+          <button class="btn btn-secundario" type="button" data-quiz-voltar hidden>Voltar</button>
+          <button class="btn btn-primario" type="submit" data-quiz-enviar><svg aria-hidden="true"><use href="#i-msg"/></svg>Abrir WhatsApp com meu diagnóstico</button>
+        </div>
+      </form>
+
+      <p class="quiz-alternativa">Prefere só conversar? <a href="https://wa.me/5514997410728?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20Kevma%20Tech%20e%20quero%20o%20diagn%C3%B3stico%20gr%C3%A1tis%20da%20minha%20empresa." target="_blank" rel="noopener">Chame no WhatsApp</a></p>
     </div>
   </section>
 </main>
