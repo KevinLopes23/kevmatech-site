@@ -337,6 +337,12 @@ section { padding: var(--secao) 0; }
 .rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .rodape a { text-decoration: none; }
 .rodape a:hover { color: var(--branco); }
+.sociais { display: flex !important; gap: 12px; align-items: center; }
+.sociais a { position: relative; width: 48px; height: 48px; border-radius: 14px; display: grid; place-items: center; color: var(--grafite-claro); border: 1px solid rgba(255, 255, 255, .14); transition: color .2s ease, background-color .2s ease, border-color .2s ease, transform .2s ease; }
+.sociais a:hover, .sociais a:focus-visible { color: var(--ink); background: var(--laranja); border-color: var(--laranja); transform: translateY(-3px); }
+.sociais svg { width: 22px; height: 22px; }
+.sociais a::after { content: attr(data-dica); position: absolute; bottom: calc(100% + 8px); left: 50%; transform: translateX(-50%) translateY(4px); background: var(--branco); color: var(--ink); font: 700 12px/1 var(--titulo); padding: 6px 8px; border-radius: 6px; white-space: nowrap; opacity: 0; pointer-events: none; transition: opacity .2s ease, transform .2s ease; }
+.sociais a:hover::after, .sociais a:focus-visible::after { opacity: 1; transform: translateX(-50%); }
 .copyright { width: 100%; border-top: 1px solid rgba(255, 255, 255, .08); padding-top: 22px; font-size: 14px; }
 
 /* WhatsApp flutuante */
