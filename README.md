@@ -12,8 +12,6 @@ HTML e CSS estáticos, sem build e sem dependências. Publicado no GitHub Pages.
 
 ## Pendências
 
-- **Instagram:** quando o perfil existir, trocar no rodapé do `index.html` o item `Instagram em breve` por um
-  link `https://instagram.com/<perfil>`.
 - **Domínio próprio:** ao comprar (ex.: `kevmatech.com.br`), configurar em *Settings → Pages → Custom domain*,
   criar o arquivo `CNAME` com o domínio e trocar a URL base em `index.html`, `robots.txt` e `sitemap.xml`.
 

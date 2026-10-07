@@ -164,8 +164,6 @@ section { padding: var(--secao) 0; }
 .rodape ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 10px; }
 .rodape a { text-decoration: none; }
 .rodape a:hover { color: var(--branco); }
-.em-breve { opacity: .7; }
-.em-breve small { border: 1px solid rgba(255, 255, 255, .2); border-radius: 999px; padding: 2px 8px; margin-left: 6px; font-size: 12px; }
 .copyright { width: 100%; border-top: 1px solid rgba(255, 255, 255, .08); padding-top: 22px; font-size: 14px; }
 
 /* WhatsApp flutuante */
