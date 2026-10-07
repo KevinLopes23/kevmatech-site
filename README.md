@@ -1,7 +1,8 @@
 # Site da Kevma Tech
 
 Site institucional da Kevma Tech (Bauru-SP): presença no Google, sites e sistemas sob medida.
-HTML e CSS estáticos, sem build e sem dependências. Publicado no GitHub Pages.
+HTML, CSS e um JavaScript leve, sem build e sem dependências. Publicado no GitHub Pages em
+**https://kevmatech.com.br** (DNS no Registro.br: 4 registros A para os IPs do GitHub Pages + CNAME `www`).
 
 ## Estrutura
 
