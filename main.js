@@ -139,7 +139,7 @@
   /* Diagnóstico em 3 cliques: monta a mensagem e abre o WhatsApp */
   const quiz = document.querySelector('[data-quiz]');
   if (quiz) {
-    const WHATSAPP = '5514997410728';
+    const WHATSAPP = '353857362588';
     const passos = Array.from(quiz.querySelectorAll('.quiz-passo'));
     const barraQuiz = quiz.querySelector('[data-quiz-barra]');
     const contadorQuiz = quiz.querySelector('[data-quiz-contador]');
